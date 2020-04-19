@@ -18,12 +18,12 @@ struct SettersSampleCollectionViewModel {
     init(provider: SampleProviderProtocol) {
         self.provider = provider
     }
-}
-
-extension SettersSampleCollectionViewModel {
     
     // MARK: Actions
     mutating func fetchMovies() {
+        movies.append(Movie(voteAverage: 7.1, posterPath: "/8ZX18L5m6rH5viSYpRnTSbb9eXh.jpg", title: "The Platform"))
+        
+        /*
         provider.fetchMovies { [self] (movies, error) in
             if let _ = error {
                 return
@@ -31,6 +31,6 @@ extension SettersSampleCollectionViewModel {
             if let movies = movies {
                 self.movies = movies
             }
-        }
+        }*/
     }
 }
