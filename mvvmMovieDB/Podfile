@@ -1,0 +1,19 @@
+platform :ios, '9.0'
+
+target 'mvvmMovieDB' do
+
+  use_frameworks!
+
+  pod 'SimpleConnector', :path => '../../SimpleConnector'
+  pod 'SDWebImage'
+
+  target 'mvvmMovieDBTests' do
+    inherit! :search_paths
+
+  end
+
+  target 'mvvmMovieDBUITests' do
+
+  end
+
+end

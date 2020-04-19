@@ -1,0 +1,25 @@
+PODS:
+  - SDWebImage (5.7.2):
+    - SDWebImage/Core (= 5.7.2)
+  - SDWebImage/Core (5.7.2)
+  - SimpleConnector (1.0.0)
+
+DEPENDENCIES:
+  - SDWebImage
+  - SimpleConnector (from `../../SimpleConnector`)
+
+SPEC REPOS:
+  trunk:
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  SimpleConnector:
+    :path: "../../SimpleConnector"
+
+SPEC CHECKSUMS:
+  SDWebImage: d9ea4959d99c52276dfada481987018fcaea3d58
+  SimpleConnector: fe7b0fbd8a8055c1b255f689efe6fb2a8f9bc829
+
+PODFILE CHECKSUM: 81765b5c903833a8ffd9554a3429ad92e9a06038
+
+COCOAPODS: 1.9.1
