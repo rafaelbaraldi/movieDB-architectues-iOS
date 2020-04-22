@@ -11,6 +11,9 @@ import UIKit
 protocol InterfaceSampleCollectionViewControllerProtocol: class {
     func displayMovies(movies: [Movie])
     func displayError(error: Error)
+    
+    func displayLoading()
+    func hideLoading()
 }
 
 class InterfaceSampleCollectionViewController: SampleCollectionViewController {
@@ -19,23 +22,18 @@ class InterfaceSampleCollectionViewController: SampleCollectionViewController {
     var viewModel: InterfaceSampleCollectionViewModelProtocol
     
     // MARK: - Contructors
-    override init() {
-        let provider = SampleProvider()
-        viewModel = InterfaceSampleCollectionViewModel(view: self, provider: provider)
+    init(viewModel: InterfaceSampleCollectionViewModelProtocol) {
+        self.viewModel = viewModel
         super.init()
-        title = "Reactiave Setters"
+        title = "Interface"
     }
     required init?(coder: NSCoder) {
-        let provider = SampleProvider()
-        viewModel = InterfaceSampleCollectionViewModel(view: self, provider: provider)
-        super.init(coder: coder)
-        title = "Reactiave Setters"
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel.fetchMovies()
     }
 }

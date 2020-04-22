@@ -7,3 +7,36 @@
 //
 
 import Foundation
+
+typealias fetchMoviesSuccess = ([Movie]) -> ()
+typealias fetchMoviesFailure = (Error) -> ()
+
+protocol CallbackSampleCollectionViewModelProtocol {
+    var movies: [Movie] { get }
+    func fetchMovies(success: @escaping fetchMoviesSuccess,
+                     failure: @escaping fetchMoviesFailure)
+}
+
+class CallbackSampleCollectionViewModel: CallbackSampleCollectionViewModelProtocol {
+    
+    // MARK: - Properties
+    var movies: [Movie] = []
+    var service: SampleServicerPotocol
+    
+    // MARK: - Constructor
+    init(service: SampleServicerPotocol) {
+        self.service = service
+    }
+    
+    // MARK: - Implementation
+    func fetchMovies(success: @escaping fetchMoviesSuccess,
+                     failure: @escaping fetchMoviesFailure) {
+        service.fetchMovies { (movies, error) in
+            if let error = error {
+                failure(error)
+                return
+            }
+            success(movies ?? [])
+        }
+    }
+}

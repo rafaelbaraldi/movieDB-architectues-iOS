@@ -12,22 +12,22 @@ struct Sample {
     
     // MARK: - Properties
     var name: String
-    var controller: (() -> UIViewController?)
+    var coordinator: (() -> Coordinator?)
     
     
     // MARK: - Constructors
     init(name: String,
-         controller: @autoclosure @escaping (() -> UIViewController?) = nil) {
+         coordinator: @autoclosure @escaping (() -> Coordinator?) = nil) {
         self.name = name
-        self.controller = controller
+        self.coordinator = coordinator
     }
     
     // MARK: - List
     static let list: [Sample] = [
-        .init(name: "RxSwift"),
-        .init(name: "Reactiave Setters", controller: SettersSampleCollectionViewController()),
-        .init(name: "Callback"),
-        .init(name: "Interface", controller: InterfaceSampleCollectionViewController()),
+        .init(name: "RxSwift", coordinator: RxCoordinator()),
+        .init(name: "Reactiave Setters", coordinator: SettersCoordinator()),
+        .init(name: "Callback", coordinator: CallbackCoordinator()),
+        .init(name: "Interface", coordinator: InterfaceCoordinator()),
         .init(name: "SwiftUI+Combine")
     ]
 }

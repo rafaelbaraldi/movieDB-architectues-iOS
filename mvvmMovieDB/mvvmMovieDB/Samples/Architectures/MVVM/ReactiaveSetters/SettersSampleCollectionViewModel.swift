@@ -11,17 +11,17 @@ import UIKit
 class SettersSampleCollectionViewModel {
     
     // MARK: Properties
-    let provider: SampleProviderProtocol
+    var service: SampleServicerPotocol
     var movies: [Movie] = []
     
     // MARK: - Constructors
-    init(provider: SampleProviderProtocol) {
-        self.provider = provider
+    init(service: SampleServicerPotocol) {
+        self.service = service
     }
     
     // MARK: Actions
     func fetchMovies() {
-        provider.fetchMovies { [weak self] (movies, error) in
+        service.fetchMovies { [weak self] (movies, error) in
             if let _ = error {
                 return
             }

@@ -6,6 +6,8 @@ target 'mvvmMovieDB' do
 
   pod 'SimpleConnector', :path => '../../SimpleConnector'
   pod 'SDWebImage'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'mvvmMovieDBTests' do
     inherit! :search_paths

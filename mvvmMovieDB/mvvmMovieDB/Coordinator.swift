@@ -6,4 +6,8 @@
 //  Copyright © 2020 Rafael Baraldi. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol Coordinator {
+    func start(from originViewController: UIViewController)
+}

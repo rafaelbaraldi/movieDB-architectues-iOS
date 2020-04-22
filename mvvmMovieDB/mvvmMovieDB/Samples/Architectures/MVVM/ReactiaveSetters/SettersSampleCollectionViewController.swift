@@ -18,17 +18,13 @@ class SettersSampleCollectionViewController: SampleCollectionViewController {
     }
     
     // MARK: - Contructors
-    override init() {
-        let provider = SampleProvider()
-        viewModel = SettersSampleCollectionViewModel(provider: provider)
+    init(viewModel: SettersSampleCollectionViewModel) {
+        self.viewModel = viewModel
         super.init()
         title = "Reactiave Setters"
     }
     required init?(coder: NSCoder) {
-        let provider = SampleProvider()
-        viewModel = SettersSampleCollectionViewModel(provider: provider)
-        super.init(coder: coder)
-        title = "Reactiave Setters"
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Lifecycle

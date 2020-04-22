@@ -48,6 +48,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func setImagePath(_ imagePath: String?) {
         guard let imagePath = imagePath else { return }
         let imageUrl = URL(string: "\(movieCoverBaseURL)\(imagePath)")
-        movieImage.sd_setImage(with: imageUrl)
+        let loadingView = LoadingView.start(in: self)
+        movieImage.sd_setImage(with: imageUrl) { (_, _, _, _) in
+            loadingView.stop() }
     }
 }

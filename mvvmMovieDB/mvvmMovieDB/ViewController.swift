@@ -36,9 +36,17 @@ extension ViewController{
                             didSelectRowAt indexPath: IndexPath) {
         
         let sample = samples[indexPath.row]
-        navigationController?.pushViewController(sample.controller(),
-                                                 animated: true)
+        if let coordinator = sample.coordinator() {
+            coordinator.start(from: self)
+            return
+        }
         
+        displayError(error: UnimplementedArchitectureError())
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+// MARK: - Errors
+struct UnimplementedArchitectureError: LocalizedError {
+    var errorDescription: String? = "Architecture Sample not implemented yet"
 }

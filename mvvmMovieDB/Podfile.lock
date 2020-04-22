@@ -1,15 +1,26 @@
 PODS:
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
   - SDWebImage (5.7.2):
     - SDWebImage/Core (= 5.7.2)
   - SDWebImage/Core (5.7.2)
   - SimpleConnector (1.0.0)
 
 DEPENDENCIES:
+  - RxCocoa
+  - RxSwift
   - SDWebImage
   - SimpleConnector (from `../../SimpleConnector`)
 
 SPEC REPOS:
   trunk:
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SDWebImage
 
 EXTERNAL SOURCES:
@@ -17,9 +28,12 @@ EXTERNAL SOURCES:
     :path: "../../SimpleConnector"
 
 SPEC CHECKSUMS:
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: d9ea4959d99c52276dfada481987018fcaea3d58
   SimpleConnector: fe7b0fbd8a8055c1b255f689efe6fb2a8f9bc829
 
-PODFILE CHECKSUM: 81765b5c903833a8ffd9554a3429ad92e9a06038
+PODFILE CHECKSUM: d7899960de295fe6d1d5a8ba037f71e16e50915b
 
 COCOAPODS: 1.9.1

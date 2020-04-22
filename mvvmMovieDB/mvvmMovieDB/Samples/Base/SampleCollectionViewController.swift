@@ -12,6 +12,9 @@ private let reuseIdentifier = "sampleCollectionCell"
 
 class SampleCollectionViewController: UICollectionViewController {
     
+    // MARK: - Properties
+    var loadingView: LoadingView?
+    
     // MARK: - Contructors
     init() {
         let flowLayout = UICollectionViewFlowLayout()
@@ -27,6 +30,14 @@ class SampleCollectionViewController: UICollectionViewController {
 
         collectionView?.register(MovieCollectionViewCell.self,
                                  forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    // MARK: - Loading
+    func displayLoading() {
+        loadingView = LoadingView.start(in: view)
+    }
+    func hideLoading() {
+        loadingView?.stop()
     }
 }
 

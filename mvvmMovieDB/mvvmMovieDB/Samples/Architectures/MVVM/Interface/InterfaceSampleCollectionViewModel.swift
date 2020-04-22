@@ -17,19 +17,19 @@ class InterfaceSampleCollectionViewModel: InterfaceSampleCollectionViewModelProt
     
     // MARK: - Properties
     weak var view: InterfaceSampleCollectionViewControllerProtocol?
-    var provider: SampleProviderProtocol
+    var service: SampleServicerPotocol
     var movies: [Movie] = []
     
     // MARK: - Constructors
-    init(view: InterfaceSampleCollectionViewControllerProtocol,
-         provider: SampleProviderProtocol) {
-        self.view = view
-        self.provider = provider
+    init(service: SampleServicerPotocol) {
+        self.service = service
     }
     
     // MARK: - Implementation
     func fetchMovies() {
-        provider.fetchMovies { [weak self] (movies, error) in
+        view?.displayLoading()
+        service.fetchMovies { [weak self] (movies, error) in
+            self?.view?.hideLoading()
             if let error = error {
                 self?.view?.displayError(error: error)
                 return

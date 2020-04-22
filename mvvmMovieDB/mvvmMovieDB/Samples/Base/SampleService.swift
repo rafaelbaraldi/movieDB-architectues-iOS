@@ -13,57 +13,32 @@ import SimpleConnector
 typealias CompletionCallbackType = (([Movie]?, Error?) -> ())
 
 // MARK: Interface
-protocol SampleProviderProtocol {
+protocol SampleServicerPotocol {
     func fetchMovies(_ completion: @escaping CompletionCallbackType)
 }
 
 // MARK: - Constants
-let apiBaseURL        = "http://api.themoviedb.org/3/movie"
 let apiKey            = "d7378b8d8f3194315f9163bd01782a7b"
 
-class SampleProvider: SampleProviderProtocol {
+class SampleService: SampleServicerPotocol {
     
     // MARK: - Properties
-    lazy var connector = {
-        return RESTConnector.init(baseURL: apiBaseURL)
-    }()
+    var provider: RESTConnector
+    
+    // MARK: - Concstructor
+    init(provider: RESTConnector) {
+        self.provider = provider
+    }
     
     // MARK: - Implementation
     func fetchMovies(_ completion: @escaping CompletionCallbackType) {
         let request = RESTRequest(endPoint: "/popular?page=1&api_key=\(apiKey)",
                                   method: .get)
         
-        connector.request(request) { (response: RESTResponse<MovieListResponse>) in
+        provider.request(request) { (response: RESTResponse<MovieListResponse>) in
             DispatchQueue.main.async {
                 completion(response.object?.results, response.error)
             }
         }
-    }
-}
-
-
-struct MovieListResponse: Decodable {
-    let results: [Movie]?
-    let totalPages: Double?
-    let totalResults: Double?
-    let page: Double?
-    
-    enum CodingKeys: String, CodingKey {
-        case results
-        case totalPages = "total_pages"
-        case totalResults = "total_results"
-        case page
-    }
-}
-
-struct Movie: Decodable {
-    let voteAverage: Double?
-    let posterPath: String?
-    let title: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case voteAverage = "vote_average"
-        case posterPath = "poster_path"
-        case title
     }
 }
