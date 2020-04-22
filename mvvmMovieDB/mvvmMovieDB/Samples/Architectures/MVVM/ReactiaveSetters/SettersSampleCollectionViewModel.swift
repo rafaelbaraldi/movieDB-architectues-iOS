@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SettersSampleCollectionViewModel {
+class SettersSampleCollectionViewModel {
     
     // MARK: Properties
     let provider: SampleProviderProtocol
@@ -20,17 +20,14 @@ struct SettersSampleCollectionViewModel {
     }
     
     // MARK: Actions
-    mutating func fetchMovies() {
-        movies.append(Movie(voteAverage: 7.1, posterPath: "/8ZX18L5m6rH5viSYpRnTSbb9eXh.jpg", title: "The Platform"))
-        
-        /*
-        provider.fetchMovies { [self] (movies, error) in
+    func fetchMovies() {
+        provider.fetchMovies { [weak self] (movies, error) in
             if let _ = error {
                 return
             }
             if let movies = movies {
-                self.movies = movies
+                self?.movies = movies
             }
-        }*/
+        }
     }
 }

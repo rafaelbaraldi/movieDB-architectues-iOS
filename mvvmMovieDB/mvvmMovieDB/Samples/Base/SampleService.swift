@@ -30,7 +30,7 @@ class SampleProvider: SampleProviderProtocol {
     
     // MARK: - Implementation
     func fetchMovies(_ completion: @escaping CompletionCallbackType) {
-        let request = RESTRequest(endPoint: "/latest?page=1&api_key=\(apiKey)",
+        let request = RESTRequest(endPoint: "/popular?page=1&api_key=\(apiKey)",
                                   method: .get)
         
         connector.request(request) { (response: RESTResponse<MovieListResponse>) in
@@ -43,14 +43,27 @@ class SampleProvider: SampleProviderProtocol {
 
 
 struct MovieListResponse: Decodable {
-    let results: [Movie]
-    let totalPages: Double
-    let totalResults: Double
-    let page: Double
+    let results: [Movie]?
+    let totalPages: Double?
+    let totalResults: Double?
+    let page: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+        case page
+    }
 }
 
 struct Movie: Decodable {
-    let voteAverage: Double
-    let posterPath: String
-    let title: String
+    let voteAverage: Double?
+    let posterPath: String?
+    let title: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case voteAverage = "vote_average"
+        case posterPath = "poster_path"
+        case title
+    }
 }

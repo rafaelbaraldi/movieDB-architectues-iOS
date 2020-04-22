@@ -8,30 +8,17 @@
 
 import UIKit
 
-private let reuseIdentifier = "callbackSampleCollectionCell"
+private let reuseIdentifier = "sampleCollectionCell"
 
-class SettersSampleCollectionViewController: UICollectionViewController {
-
-    // MARK: Properties
-    var viewModel: SettersSampleCollectionViewModel {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+class SampleCollectionViewController: UICollectionViewController {
     
     // MARK: - Contructors
     init() {
-        let provider = SampleProvider()
-        viewModel = SettersSampleCollectionViewModel(provider: provider)
         let flowLayout = UICollectionViewFlowLayout()
         super.init(collectionViewLayout: flowLayout)
-        title = "Reactiave Setters"
     }
     required init?(coder: NSCoder) {
-        let provider = SampleProvider()
-        viewModel = SettersSampleCollectionViewModel(provider: provider)
         super.init(coder: coder)
-        title = "Reactiave Setters"
     }
     
     // MARK: Lifecycle
@@ -40,25 +27,20 @@ class SettersSampleCollectionViewController: UICollectionViewController {
 
         collectionView?.register(MovieCollectionViewCell.self,
                                  forCellWithReuseIdentifier: reuseIdentifier)
-        
-        viewModel.fetchMovies()
     }
 }
 
-extension SettersSampleCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension SampleCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return viewModel.movies.count
+        return 0
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as? MovieCollectionViewCell
-    
-        let movie = viewModel.movies[indexPath.row]
-        cell?.setImagePath(movie.posterPath)
-    
+        
         return cell ?? UICollectionViewCell()
     }
 
@@ -77,5 +59,19 @@ extension SettersSampleCollectionViewController: UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+}
+
+// MARK: - Base Extension
+extension UIViewController {
+    func displayError(error: Error) {
+        let alertController = UIAlertController(title: "Error",
+                                                message: error.localizedDescription,
+                                                preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "Ok", style: .default)
+        alertController.addAction(alertAction)
+        
+        present(alertController, animated: true)
     }
 }

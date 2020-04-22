@@ -45,7 +45,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Internal functions
-    func setImagePath(_ imagePath: String) {
+    func setImagePath(_ imagePath: String?) {
+        guard let imagePath = imagePath else { return }
         let imageUrl = URL(string: "\(movieCoverBaseURL)\(imagePath)")
         movieImage.sd_setImage(with: imageUrl)
     }
