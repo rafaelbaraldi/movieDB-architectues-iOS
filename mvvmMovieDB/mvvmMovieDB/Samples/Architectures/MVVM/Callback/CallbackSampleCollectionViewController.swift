@@ -34,6 +34,7 @@ class CallbackSampleCollectionViewController: SampleCollectionViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         displayLoading()
         viewModel.fetchMovies(
             success: { [weak self] _ in
