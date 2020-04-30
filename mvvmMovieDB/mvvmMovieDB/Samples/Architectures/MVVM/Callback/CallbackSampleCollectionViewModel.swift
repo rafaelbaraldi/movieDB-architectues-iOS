@@ -36,6 +36,7 @@ class CallbackSampleCollectionViewModel: CallbackSampleCollectionViewModelProtoc
                 failure(error)
                 return
             }
+            self.movies = movies ?? []
             success(movies ?? [])
         }
     }

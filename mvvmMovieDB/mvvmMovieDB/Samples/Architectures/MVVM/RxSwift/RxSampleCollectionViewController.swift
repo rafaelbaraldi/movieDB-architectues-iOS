@@ -25,7 +25,7 @@ class RxSampleCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: 185, height: 277)
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         super.init(collectionViewLayout: flowLayout)
-        title = "Reactiave Setters"
+        title = "RxSwift"
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

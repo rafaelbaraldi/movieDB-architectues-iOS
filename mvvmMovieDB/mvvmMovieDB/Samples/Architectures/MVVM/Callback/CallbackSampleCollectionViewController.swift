@@ -25,7 +25,7 @@ class CallbackSampleCollectionViewController: SampleCollectionViewController {
     init(viewModel: CallbackSampleCollectionViewModelProtocol) {
         self.viewModel = viewModel
         super.init()
-        title = "Reactiave Setters"
+        title = "Callback"
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
