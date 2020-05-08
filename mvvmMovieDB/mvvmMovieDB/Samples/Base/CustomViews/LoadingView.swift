@@ -33,7 +33,7 @@ class LoadingView: UIView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor.init(white: 0.5, alpha: 0.5)
-        LoadingView.pin(subview: activityIndicator, at: self)
+        pin(activityIndicator)
     }
     
     // MARK: - Public functions
@@ -44,17 +44,7 @@ class LoadingView: UIView {
     // MARK: - Static Functions
     static func start(in view: UIView) -> LoadingView {
         let loadingView = LoadingView()
-        LoadingView.pin(subview: loadingView, at: view)
+        view.pin(loadingView)
         return loadingView
-    }
-    private static func pin(subview: UIView, at superview: UIView) {
-        superview.addSubview(subview)
-        
-        let leadingConstraint = subview.leadingAnchor.constraint(equalTo: superview.leadingAnchor)
-        let trailingConstraint = subview.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-        let topConstraint = subview.topAnchor.constraint(equalTo: superview.topAnchor)
-        let bottomConstraint = subview.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-        
-        superview.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
     }
 }

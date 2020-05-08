@@ -8,13 +8,14 @@
 
 import UIKit
 
-struct RxCoordinator: Coordinator {
+class RxCoordinator: SampleCollectionCoordinator, Coordinator {
     func start(from originViewController: UIViewController) {
         
         let provider = SampleProvider.shared
         let service = SampleService(provider: provider)
         let viewModel = RxSampleCollectionViewModel(service: service)
         let viewController = RxSampleCollectionViewController(viewModel: viewModel)
+        viewController.coordinatorDelegate = self
         
         originViewController.show(viewController, sender: self)
     }

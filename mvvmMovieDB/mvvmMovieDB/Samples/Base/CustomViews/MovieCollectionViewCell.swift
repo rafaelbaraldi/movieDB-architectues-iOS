@@ -34,22 +34,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private functions
     private func setup() {
-        self.contentView.addSubview(self.movieImage)
-        
-        let leadingConstraint = movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
-        let trailingConstraint = movieImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        let topConstraint = movieImage.topAnchor.constraint(equalTo: contentView.topAnchor)
-        let bottomConstraint = movieImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        
-        self.contentView.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
+        pin(movieImage)
     }
     
     // MARK: - Internal functions
     func setImagePath(_ imagePath: String?) {
-        guard let imagePath = imagePath else { return }
-        let imageUrl = URL(string: "\(movieCoverBaseURL)\(imagePath)")
-        let loadingView = LoadingView.start(in: self)
-        movieImage.sd_setImage(with: imageUrl) { (_, _, _, _) in
-            loadingView.stop() }
+        setImagePath(imagePath, imageView: &movieImage)
     }
 }

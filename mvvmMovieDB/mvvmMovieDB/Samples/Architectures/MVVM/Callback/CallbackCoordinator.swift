@@ -8,13 +8,14 @@
 
 import UIKit
 
-class CallbackCoordinator: Coordinator {
+class CallbackCoordinator: SampleCollectionCoordinator, Coordinator {
     func start(from originViewController: UIViewController) {
         
         let provider = SampleProvider.shared
         let service = SampleService(provider: provider)
         let viewModel = CallbackSampleCollectionViewModel(service: service)
         let viewController = CallbackSampleCollectionViewController(viewModel: viewModel)
+        viewController.coordinatorDelegate = self
         
         originViewController.show(viewController, sender: self)
     }

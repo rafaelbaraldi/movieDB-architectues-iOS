@@ -11,3 +11,4 @@ import UIKit
 protocol Coordinator {
     func start(from originViewController: UIViewController)
 }
+

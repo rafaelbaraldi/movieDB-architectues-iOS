@@ -10,9 +10,14 @@ import UIKit
 
 private let reuseIdentifier = "sampleCollectionCell"
 
+protocol SampleCollectionViewControllerDelegate {
+    func showMovieDetails(_ viewController: SampleCollectionViewController, movie: Movie)
+}
+
 class SampleCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
+    var coordinatorDelegate: SampleCollectionViewControllerDelegate?
     var loadingView: LoadingView?
     
     // MARK: - Contructors
@@ -71,6 +76,9 @@ extension SampleCollectionViewController: UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
+        if let movie = self.collectionView(collectionView, movieForItemAt: indexPath) {
+            coordinatorDelegate?.showMovieDetails(self, movie: movie)
+        }
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 

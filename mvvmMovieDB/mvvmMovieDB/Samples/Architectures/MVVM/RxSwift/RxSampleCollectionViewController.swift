@@ -47,5 +47,11 @@ class RxSampleCollectionViewController: SampleCollectionViewController {
                                                           cellType: MovieCollectionViewCell.self)) { (_, element, cell) in
                                                             cell.setImagePath(element.posterPath)
         }.disposed(by: bag)
+        
+        collectionView.rx.modelSelected(Movie.self).subscribe { [weak self] movie in
+            if let strongSelf = self, let element = movie.element {
+                strongSelf.coordinatorDelegate?.showMovieDetails(strongSelf, movie: element)
+            }
+        }.disposed(by: bag)
     }
 }

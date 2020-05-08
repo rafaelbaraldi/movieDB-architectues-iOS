@@ -8,13 +8,14 @@
 
 import UIKit
 
-class InOutCoordinator: Coordinator {
+class InOutCoordinator: SampleCollectionCoordinator, Coordinator {
     func start(from originViewController: UIViewController) {
         
         let provider = SampleProvider.shared
         let service = SampleService(provider: provider)
         let viewModel = InOutSampleCollectionViewModel(service: service)
         let viewController = InOutSampleCollectionViewController(viewModel: viewModel)
+        viewController.coordinatorDelegate = self
         
         originViewController.show(viewController, sender: self)
     }

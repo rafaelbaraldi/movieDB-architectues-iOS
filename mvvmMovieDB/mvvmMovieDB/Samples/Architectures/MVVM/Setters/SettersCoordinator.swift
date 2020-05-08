@@ -8,13 +8,14 @@
 
 import UIKit
 
-struct SettersCoordinator: Coordinator {
+class SettersCoordinator: SampleCollectionCoordinator, Coordinator {
     func start(from originViewController: UIViewController) {
         
         let provider = SampleProvider.shared
         let service = SampleService(provider: provider)
         let viewModel = SettersSampleCollectionViewModel(service: service)
         let viewController = SettersSampleCollectionViewController(viewModel: viewModel)
+        viewController.coordinatorDelegate = self
         
         originViewController.show(viewController, sender: self)
     }

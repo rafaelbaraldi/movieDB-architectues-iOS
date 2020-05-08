@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct InterfaceCoordinator: Coordinator {
+class InterfaceCoordinator: SampleCollectionCoordinator, Coordinator {
     func start(from originViewController: UIViewController) {
         
         let provider = SampleProvider.shared
@@ -16,6 +16,7 @@ struct InterfaceCoordinator: Coordinator {
         let viewModel = InterfaceSampleCollectionViewModel(service: service)
         let viewController = InterfaceSampleCollectionViewController(viewModel: viewModel)
         viewModel.view = viewController
+        viewController.coordinatorDelegate = self
         
         originViewController.show(viewController, sender: self)
     }
