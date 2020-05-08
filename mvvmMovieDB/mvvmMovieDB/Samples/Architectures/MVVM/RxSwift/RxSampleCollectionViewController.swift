@@ -12,7 +12,7 @@ import RxCocoa
 
 private let reuseIdentifier = "RxSampleCollectionCell"
 
-class RxSampleCollectionViewController: UICollectionViewController {
+class RxSampleCollectionViewController: SampleCollectionViewController {
 
     // MARK: Properties
     var viewModel: RxSampleCollectionViewModel
@@ -21,10 +21,7 @@ class RxSampleCollectionViewController: UICollectionViewController {
     // MARK: - Contructors
     init(viewModel: RxSampleCollectionViewModel) {
         self.viewModel = viewModel
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 185, height: 277)
-        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        super.init(collectionViewLayout: flowLayout)
+        super.init()
         title = "RxSwift"
     }
     required init?(coder: NSCoder) {

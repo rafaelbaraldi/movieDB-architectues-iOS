@@ -12,7 +12,8 @@ class SettersSampleCollectionViewModel {
     
     // MARK: Properties
     var service: SampleServicerPotocol
-    var movies: [Movie] = []
+    var movies: Dynamic<[Movie]> = Dynamic([])
+    var error: Dynamic<Error?> = Dynamic(nil)
     
     // MARK: - Constructors
     init(service: SampleServicerPotocol) {
@@ -22,11 +23,12 @@ class SettersSampleCollectionViewModel {
     // MARK: Actions
     func fetchMovies() {
         service.fetchMovies { [weak self] (movies, error) in
-            if let _ = error {
+            if let error = error {
+                self?.error.value = error
                 return
             }
             if let movies = movies {
-                self?.movies = movies
+                self?.movies.value = movies
             }
         }
     }

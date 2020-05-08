@@ -13,7 +13,7 @@ class SettersSampleCollectionViewController: SampleCollectionViewController {
     // MARK: Properties
     var viewModel: SettersSampleCollectionViewModel {
         didSet {
-            collectionView.reloadData()
+            bindViewModel()
         }
     }
     
@@ -30,25 +30,27 @@ class SettersSampleCollectionViewController: SampleCollectionViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        bindViewModel()
         viewModel.fetchMovies()
     }
-}
-
-// MARK: - Override BaseSampleCollectionViewController
-extension SettersSampleCollectionViewController {
     
+    // MARK: - Bind View Model
+    func bindViewModel() {
+        viewModel.movies.bind = { [weak self] _ in
+            self?.collectionView.reloadData()
+        }
+        viewModel.error.bind = { [weak self] error in
+            self?.displayError(error: error!)
+        }
+    }
+
+    // MARK: - Override BaseSampleCollectionViewController
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return viewModel.movies.count
+        return viewModel.movies.value.count
     }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView,
-                                        cellForItemAt: indexPath) as? MovieCollectionViewCell
-    
-        let movie = viewModel.movies[indexPath.row]
-        cell?.setImagePath(movie.posterPath)
-    
-        return cell ?? UICollectionViewCell()
+    override func collectionView(_ collectionView: UICollectionView,
+                                 movieForItemAt indexPath: IndexPath) -> Movie? {
+        return viewModel.movies.value[indexPath.row]
     }
 }

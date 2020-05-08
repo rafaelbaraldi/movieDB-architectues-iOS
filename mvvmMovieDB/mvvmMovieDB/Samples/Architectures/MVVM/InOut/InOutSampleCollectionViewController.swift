@@ -29,11 +29,8 @@ class InOutSampleCollectionViewController: SampleCollectionViewController {
         super.viewDidLoad()
         viewModel.input.fetchMovies()
     }
-}
-
-// MARK: - Bind View Model
-extension InOutSampleCollectionViewController {
     
+    // MARK: - Bind View Model
     func bindViewModel() {
         viewModel.output.displayErrorMessage = displayError
         viewModel.output.displayMovies = displayMovies
@@ -41,21 +38,14 @@ extension InOutSampleCollectionViewController {
     func displayMovies(_ movies: [Movie]) {
         collectionView.reloadData()
     }
-}
-
-// MARK: - Override BaseSampleCollectionViewController
-extension InOutSampleCollectionViewController {
+    
+    // MARK: - Override BaseSampleCollectionViewController
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return viewModel.dataStore.movies.count
     }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView,
-                                        cellForItemAt: indexPath) as? MovieCollectionViewCell
-    
-        let movie = viewModel.dataStore.movies[indexPath.row]
-        cell?.setImagePath(movie.posterPath)
-    
-        return cell ?? UICollectionViewCell()
+    override func collectionView(_ collectionView: UICollectionView,
+                                 movieForItemAt indexPath: IndexPath) -> Movie? {
+        return viewModel.dataStore.movies[indexPath.row]
     }
 }

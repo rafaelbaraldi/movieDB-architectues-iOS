@@ -36,27 +36,20 @@ class InterfaceSampleCollectionViewController: SampleCollectionViewController {
         super.viewDidLoad()
         viewModel.fetchMovies()
     }
+    
+    // MARK: - Override BaseSampleCollectionViewController
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+        return viewModel.movies.count
+    }
+    override func collectionView(_ collectionView: UICollectionView,
+                                 movieForItemAt indexPath: IndexPath) -> Movie? {
+        return viewModel.movies[indexPath.row]
+    }
 }
 
 extension InterfaceSampleCollectionViewController: InterfaceSampleCollectionViewControllerProtocol {
     func displayMovies(movies: [Movie]) {
         collectionView.reloadData()
-    }
-}
-
-// MARK: - Override BaseSampleCollectionViewController
-extension InterfaceSampleCollectionViewController {
-    override func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
-        return viewModel.movies.count
-    }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView,
-                                        cellForItemAt: indexPath) as? MovieCollectionViewCell
-    
-        let movie = viewModel.movies[indexPath.row]
-        cell?.setImagePath(movie.posterPath)
-    
-        return cell ?? UICollectionViewCell()
     }
 }

@@ -18,6 +18,8 @@ class SampleCollectionViewController: UICollectionViewController {
     // MARK: - Contructors
     init() {
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 185, height: 277)
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         super.init(collectionViewLayout: flowLayout)
     }
     required init?(coder: NSCoder) {
@@ -39,6 +41,12 @@ class SampleCollectionViewController: UICollectionViewController {
     func hideLoading() {
         loadingView?.stop()
     }
+    
+    // MARK: Custom Collection Item Datasource
+    func collectionView(_ collectionView: UICollectionView,
+                        movieForItemAt indexPath: IndexPath) -> Movie? {
+        return nil
+    }
 }
 
 extension SampleCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -48,9 +56,14 @@ extension SampleCollectionViewController: UICollectionViewDelegateFlowLayout {
                                  numberOfItemsInSection section: Int) -> Int {
         return 0
     }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as? MovieCollectionViewCell
+        
+        if let movie = self.collectionView(collectionView, movieForItemAt: indexPath) {
+           cell?.setImagePath(movie.posterPath)
+        }
         
         return cell ?? UICollectionViewCell()
     }
@@ -60,17 +73,7 @@ extension SampleCollectionViewController: UICollectionViewDelegateFlowLayout {
                                  didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
     }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 185, height: 277)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
+
 }
 
 // MARK: - Base Extension
