@@ -22,6 +22,10 @@
 		2F1211B22450D91900DB6FF2 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1211B12450D91900DB6FF2 /* MovieModel.swift */; };
 		2F1211B42450D92D00DB6FF2 /* SampleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1211B32450D92D00DB6FF2 /* SampleProvider.swift */; };
 		2F1211B62450DDB700DB6FF2 /* InterfaceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1211B52450DDB700DB6FF2 /* InterfaceCoordinator.swift */; };
+		2F36F5A12469E76200B9802D /* VIPSampleCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36F59D2469E76200B9802D /* VIPSampleCollectionPresenter.swift */; };
+		2F36F5A22469E76200B9802D /* VIPSampleCollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36F59E2469E76200B9802D /* VIPSampleCollectionInteractor.swift */; };
+		2F36F5A32469E76200B9802D /* VIPSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36F59F2469E76200B9802D /* VIPSampleCollectionViewController.swift */; };
+		2F36F5A42469E76200B9802D /* VIPRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36F5A02469E76200B9802D /* VIPRouter.swift */; };
 		2F90219B24495F20003CDC19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F90219A24495F20003CDC19 /* AppDelegate.swift */; };
 		2F90219F24495F20003CDC19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F90219E24495F20003CDC19 /* ViewController.swift */; };
 		2F9021A224495F21003CDC19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9021A024495F21003CDC19 /* Main.storyboard */; };
@@ -83,6 +87,10 @@
 		2F1211B12450D91900DB6FF2 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		2F1211B32450D92D00DB6FF2 /* SampleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProvider.swift; sourceTree = "<group>"; };
 		2F1211B52450DDB700DB6FF2 /* InterfaceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceCoordinator.swift; sourceTree = "<group>"; };
+		2F36F59D2469E76200B9802D /* VIPSampleCollectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPSampleCollectionPresenter.swift; sourceTree = "<group>"; };
+		2F36F59E2469E76200B9802D /* VIPSampleCollectionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPSampleCollectionInteractor.swift; sourceTree = "<group>"; };
+		2F36F59F2469E76200B9802D /* VIPSampleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPSampleCollectionViewController.swift; sourceTree = "<group>"; };
+		2F36F5A02469E76200B9802D /* VIPRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPRouter.swift; sourceTree = "<group>"; };
 		2F90219724495F20003CDC19 /* mvvmMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mvvmMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F90219A24495F20003CDC19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F90219E24495F20003CDC19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				2F1211A92450D66300DB6FF2 /* MVVM */,
+				2F36F5952469E69C00B9802D /* Clean Swift */,
 			);
 			path = Architectures;
 			sourceTree = "<group>";
@@ -245,6 +254,25 @@
 				2F1211912449673400DB6FF2 /* Combine */,
 			);
 			path = MVVM;
+			sourceTree = "<group>";
+		};
+		2F36F5952469E69C00B9802D /* Clean Swift */ = {
+			isa = PBXGroup;
+			children = (
+				2F36F5962469E6B200B9802D /* VIP */,
+			);
+			path = "Clean Swift";
+			sourceTree = "<group>";
+		};
+		2F36F5962469E6B200B9802D /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+				2F36F5A02469E76200B9802D /* VIPRouter.swift */,
+				2F36F59F2469E76200B9802D /* VIPSampleCollectionViewController.swift */,
+				2F36F59E2469E76200B9802D /* VIPSampleCollectionInteractor.swift */,
+				2F36F59D2469E76200B9802D /* VIPSampleCollectionPresenter.swift */,
+			);
+			path = VIP;
 			sourceTree = "<group>";
 		};
 		2F90218E24495F20003CDC19 = {
@@ -621,6 +649,7 @@
 				2FA601B42450E926001D0F49 /* LoadingView.swift in Sources */,
 				2F1211B42450D92D00DB6FF2 /* SampleProvider.swift in Sources */,
 				2F1211B02450D8E900DB6FF2 /* MovieListResponse.swift in Sources */,
+				2F36F5A42469E76200B9802D /* VIPRouter.swift in Sources */,
 				2FA601C62464D5FB001D0F49 /* InOutSampleCollectionViewController.swift in Sources */,
 				2FA601B62450EA5F001D0F49 /* CallbackSampleCollectionViewController.swift in Sources */,
 				2F90219F24495F20003CDC19 /* ViewController.swift in Sources */,
@@ -634,9 +663,12 @@
 				2FA601C52464D5FB001D0F49 /* InOutSampleCollectionViewModel.swift in Sources */,
 				2F1211AC2450D71B00DB6FF2 /* Coordinator.swift in Sources */,
 				2FA601D32464F182001D0F49 /* SampleDetailCoordinator.swift in Sources */,
+				2F36F5A22469E76200B9802D /* VIPSampleCollectionInteractor.swift in Sources */,
+				2F36F5A32469E76200B9802D /* VIPSampleCollectionViewController.swift in Sources */,
 				2F12118D2449661700DB6FF2 /* Sample.swift in Sources */,
 				2FA601C92464E188001D0F49 /* Dynamic.swift in Sources */,
 				2FA601BE2450F236001D0F49 /* RxSampleCollectionViewModel.swift in Sources */,
+				2F36F5A12469E76200B9802D /* VIPSampleCollectionPresenter.swift in Sources */,
 				2FA601CD2464ECAC001D0F49 /* UIView+Extensions.swift in Sources */,
 				2F1211A0244BBAEA00DB6FF2 /* SampleService.swift in Sources */,
 				2FA601BA2450EACC001D0F49 /* CallbackCoordinator.swift in Sources */,

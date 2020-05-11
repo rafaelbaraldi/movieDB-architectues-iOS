@@ -14,28 +14,34 @@ private let sampleCellIdentifier = "sampleCell"
 class ViewController: UITableViewController {
     
     // MARK: - Properties
-    let samples: [Sample] = Sample.list
+    let architectures: [Architecture] = Architecture.list
 }
 
 // MARK: - TableView
 extension ViewController{
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return architectures.count
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return architectures[section].name
+    }
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return samples.count
+        return architectures[section].samples.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: sampleCellIdentifier,
                                                  for: indexPath)
         
-        let sample = samples[indexPath.row]
+        let sample = architectures[indexPath.section].samples[indexPath.row]
         cell.textLabel?.text = sample.name
         return cell
     }
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         
-        let sample = samples[indexPath.row]
+        let sample = architectures[indexPath.section].samples[indexPath.row]
         if let coordinator = sample.coordinator() {
             coordinator.start(from: self)
             return
