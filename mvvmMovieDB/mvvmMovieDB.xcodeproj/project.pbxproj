@@ -22,6 +22,9 @@
 		2F1211B22450D91900DB6FF2 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1211B12450D91900DB6FF2 /* MovieModel.swift */; };
 		2F1211B42450D92D00DB6FF2 /* SampleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1211B32450D92D00DB6FF2 /* SampleProvider.swift */; };
 		2F1211B62450DDB700DB6FF2 /* InterfaceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1211B52450DDB700DB6FF2 /* InterfaceCoordinator.swift */; };
+		2F183E1D246C6B99001E08A7 /* InterfaceInOutSampleCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F183E1A246C6B98001E08A7 /* InterfaceInOutSampleCollectionViewModel.swift */; };
+		2F183E1E246C6B99001E08A7 /* InterfaceInOutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F183E1B246C6B98001E08A7 /* InterfaceInOutCoordinator.swift */; };
+		2F183E1F246C6B99001E08A7 /* InterfaceInOutSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F183E1C246C6B99001E08A7 /* InterfaceInOutSampleCollectionViewController.swift */; };
 		2F36F5A12469E76200B9802D /* VIPSampleCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36F59D2469E76200B9802D /* VIPSampleCollectionPresenter.swift */; };
 		2F36F5A22469E76200B9802D /* VIPSampleCollectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36F59E2469E76200B9802D /* VIPSampleCollectionInteractor.swift */; };
 		2F36F5A32469E76200B9802D /* VIPSampleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36F59F2469E76200B9802D /* VIPSampleCollectionViewController.swift */; };
@@ -87,6 +90,9 @@
 		2F1211B12450D91900DB6FF2 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		2F1211B32450D92D00DB6FF2 /* SampleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProvider.swift; sourceTree = "<group>"; };
 		2F1211B52450DDB700DB6FF2 /* InterfaceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceCoordinator.swift; sourceTree = "<group>"; };
+		2F183E1A246C6B98001E08A7 /* InterfaceInOutSampleCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceInOutSampleCollectionViewModel.swift; sourceTree = "<group>"; };
+		2F183E1B246C6B98001E08A7 /* InterfaceInOutCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceInOutCoordinator.swift; sourceTree = "<group>"; };
+		2F183E1C246C6B99001E08A7 /* InterfaceInOutSampleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceInOutSampleCollectionViewController.swift; sourceTree = "<group>"; };
 		2F36F59D2469E76200B9802D /* VIPSampleCollectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPSampleCollectionPresenter.swift; sourceTree = "<group>"; };
 		2F36F59E2469E76200B9802D /* VIPSampleCollectionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPSampleCollectionInteractor.swift; sourceTree = "<group>"; };
 		2F36F59F2469E76200B9802D /* VIPSampleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPSampleCollectionViewController.swift; sourceTree = "<group>"; };
@@ -249,11 +255,22 @@
 				2F121190244966F600DB6FF2 /* Interface */,
 				2F12118F244966E900DB6FF2 /* Callback */,
 				2FA601C12464D08B001D0F49 /* InOut */,
+				2F183E19246C6B0B001E08A7 /* Interface+InOut */,
 				2F12118B244965FE00DB6FF2 /* RxSwift */,
 				2F12118E244966D500DB6FF2 /* Setters */,
 				2F1211912449673400DB6FF2 /* Combine */,
 			);
 			path = MVVM;
+			sourceTree = "<group>";
+		};
+		2F183E19246C6B0B001E08A7 /* Interface+InOut */ = {
+			isa = PBXGroup;
+			children = (
+				2F183E1B246C6B98001E08A7 /* InterfaceInOutCoordinator.swift */,
+				2F183E1C246C6B99001E08A7 /* InterfaceInOutSampleCollectionViewController.swift */,
+				2F183E1A246C6B98001E08A7 /* InterfaceInOutSampleCollectionViewModel.swift */,
+			);
+			path = "Interface+InOut";
 			sourceTree = "<group>";
 		};
 		2F36F5952469E69C00B9802D /* Clean Swift */ = {
@@ -654,6 +671,7 @@
 				2FA601B62450EA5F001D0F49 /* CallbackSampleCollectionViewController.swift in Sources */,
 				2F90219F24495F20003CDC19 /* ViewController.swift in Sources */,
 				2FA601B82450EABD001D0F49 /* CallbackSampleCollectionViewModel.swift in Sources */,
+				2F183E1E246C6B99001E08A7 /* InterfaceInOutCoordinator.swift in Sources */,
 				2F1211A42450CCA800DB6FF2 /* SampleCollectionViewController.swift in Sources */,
 				2F121193244967FD00DB6FF2 /* SettersSampleCollectionViewController.swift in Sources */,
 				2FA601D52464F451001D0F49 /* SampleCollectionCoordinator.swift in Sources */,
@@ -662,6 +680,7 @@
 				2FA601CB2464EB76001D0F49 /* SampleDetailViewController.swift in Sources */,
 				2FA601C52464D5FB001D0F49 /* InOutSampleCollectionViewModel.swift in Sources */,
 				2F1211AC2450D71B00DB6FF2 /* Coordinator.swift in Sources */,
+				2F183E1F246C6B99001E08A7 /* InterfaceInOutSampleCollectionViewController.swift in Sources */,
 				2FA601D32464F182001D0F49 /* SampleDetailCoordinator.swift in Sources */,
 				2F36F5A22469E76200B9802D /* VIPSampleCollectionInteractor.swift in Sources */,
 				2F36F5A32469E76200B9802D /* VIPSampleCollectionViewController.swift in Sources */,
@@ -673,6 +692,7 @@
 				2F1211A0244BBAEA00DB6FF2 /* SampleService.swift in Sources */,
 				2FA601BA2450EACC001D0F49 /* CallbackCoordinator.swift in Sources */,
 				2F1211A22450CC6F00DB6FF2 /* InterfaceSampleCollectionViewController.swift in Sources */,
+				2F183E1D246C6B99001E08A7 /* InterfaceInOutSampleCollectionViewModel.swift in Sources */,
 				2F90219B24495F20003CDC19 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

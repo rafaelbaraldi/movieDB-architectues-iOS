@@ -38,8 +38,9 @@ struct Sample {
     // MARK: - Lists
     static let mvvmList: [Sample] = [
         .init(name: "Interface", coordinator: InterfaceCoordinator()),
-        .init(name: "InOut", coordinator: InOutCoordinator()),
         .init(name: "Callback", coordinator: CallbackCoordinator()),
+        .init(name: "InOut", coordinator: InOutCoordinator()),
+        .init(name: "Interface+InOut", coordinator: InterfaceInOutCoordinator()),
         .init(name: "RxSwift", coordinator: RxCoordinator()),
         .init(name: "Setters", coordinator: SettersCoordinator()),
 //        .init(name: "Combine")
